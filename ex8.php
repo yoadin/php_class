@@ -1,6 +1,6 @@
 <?php
 
-//defining constant
+//defining constant using define()
 
 define("PI", 3.14);
 

@@ -1,5 +1,7 @@
 <?php
 
+//const key word
+
 const APP_NAME = 'Student Portal';
 
 const VERSION = '1.0';
