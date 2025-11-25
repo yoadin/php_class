@@ -1,4 +1,5 @@
 <?php
+//integer to string
  $x = 100;
 
  var_dump($x);
