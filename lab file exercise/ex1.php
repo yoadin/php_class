@@ -1,15 +1,8 @@
 <?php
 $filename = "labse.txt";
-
-$file = fopen($filename, "w") or die("Unable to open file");
-
-$text = "Hello, this is a PHP file handling Exercise.";
-
-fwrite($file,$text);
-
+$file = fopen($filename, "r+") or die("File not found!");
+fwrite($file, "New text at the start."); // Can write
+rewind($file);
+echo fread($file, filesize($filename)); // Can read
 fclose($file);
-
-echo "The File is created and text written successfully.";
-
-
 ?>

@@ -1,0 +1,1 @@
+New text at the start.ppending with read mode.
