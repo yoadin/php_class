@@ -3,9 +3,21 @@
 $foods = ['Banana', 'Mango', 'Apple'];
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(!empty($_POST['food'])){
-        $foods[] = htmlspecialchars($_POST['food']);
+        $food = htmlspecialchars($_POST['food']);
+        if(!in_array($food, $foods)){
+            $foods[] = $food;
+        }
+    }
+
+    if (!empty($_POST['del'])) {
+        $del = htmlspecialchars(trim($_POST['del']));
+        $key = array_search($del, $foods);
+        if ($key !== false) {
+            unset($foods[$key]);
+        }
     }
 }
+
 
 echo "My Favorite foods are: <br>";
 echo '<ul>';
@@ -13,9 +25,6 @@ foreach($foods as $fo){
     echo '<li>'. $fo .'</li>';
 }
 echo '</ul>';
-
-echo "Total Favorite Food: ". count($foods);
-
 
 ?>
 
@@ -30,6 +39,7 @@ echo "Total Favorite Food: ". count($foods);
 <body>
     <form action="array.php" method="post">
         Enter Food Name: <input type="text" name="food">
+        Enter name to delete: <input type = "text" name="del">
         <button type="submit" value="submit">Enter</button>
     </form>
 </body>
